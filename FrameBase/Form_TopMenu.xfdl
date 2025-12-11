@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_TopMenu" width="1280" height="150" titletext="New Form" background="antiquewhite">
+    <Layouts>
+      <Layout height="150" width="1280"/>
+    </Layouts>
+  </Form>
+</FDL>
