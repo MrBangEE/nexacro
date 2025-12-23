@@ -2,7 +2,75 @@
 <FDL version="2.1">
   <Form id="Form_Work" width="1280" height="720" titletext="Form_Work">
     <Layouts>
-      <Layout width="1280" height="720" screenid="Desktop_screen"/>
+      <Layout width="1280" height="720" screenid="Desktop_screen">
+        <Button id="btnSearch" taborder="0" text="Search" left="340" top="80" width="149" height="25" onclick="btnSearch_onclick"/>
+        <Grid id="Grid00" taborder="1" left="67" top="128" width="699" height="240" binddataset="dsData" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="ID"/>
+                <Cell col="1" text="NAME"/>
+                <Cell col="2" text="DESCRIPTION"/>
+                <Cell col="3" text="USE_YN"/>
+                <Cell col="4" text="REG_USER"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ID"/>
+                <Cell col="1" text="bind:NAME"/>
+                <Cell col="2" text="bind:DESCRIPTION"/>
+                <Cell col="3" text="bind:USE_YN"/>
+                <Cell col="4" text="bind:REG_USER"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="Edit00" taborder="2" left="88" top="80" width="252" height="25"/>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction("svcGetData"
+	               , "http://localhost:8080/nexacro/edu/getData.do"
+				   , "param=param"
+				   , "dsData=outData"
+				   , ""
+				   , "")
+};]]></Script>
+    <Objects>
+      <Dataset id="dsData">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="param">
+        <ColumnInfo>
+          <Column id="regUser" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="regUser">sample</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="param" columnid="regUser"/>
+    </Bind>
   </Form>
 </FDL>
