@@ -38,7 +38,16 @@
         <Edit id="Edit00" taborder="2" left="88" top="80" width="252" height="25"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction("svcGetData"
+	               , "http://localhost:8080/nexacro/edu/getData.do"
+				   , "param=param"
+				   , "dsData=outData"
+				   , ""
+				   , "")
+};]]></Script>
     <Objects>
       <Dataset id="dsData">
         <ColumnInfo>
