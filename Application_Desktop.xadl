@@ -2,9 +2,20 @@
 <ADL version="2.0">
   <Application id="Application_Desktop" screenid="Desktop_screen">
     <Layout>
-      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1280" height="720" titletext="FullFrame">
-        <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Work.xfdl"/>
+      <MainFrame id="mainframe" showtitlebar="false" showstatusbar="false" left="0" top="0" width="1280" height="720" titletext="FullFrame">
+        <HFrameSet id="HFrameSet" separatesize="200,*">
+          <Frames>
+            <ChildFrame id="LeftMenu" formurl="FrameBase::Form_LeftMenu.xfdl" showtitlebar="false" showtitleicon="false"/>
+            <VFrameSet id="VFrameSet" separatesize="150,*">
+              <Frames>
+                <ChildFrame id="ToptMenu" formurl="FrameBase::Form_TopMenu.xfdl" showtitlebar="false" showtitleicon="false"/>
+                <ChildFrame id="WorkForm" formurl="FrameBase::Form_Work.xfdl" showtitlebar="false" showtitleicon="false"/>
+              </Frames>
+            </VFrameSet>
+          </Frames>
+        </HFrameSet>
       </MainFrame>
     </Layout>
   </Application>
+  <Script type="xscript5.1"><![CDATA[]]></Script>
 </ADL>
